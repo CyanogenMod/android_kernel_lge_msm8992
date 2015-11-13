@@ -7383,7 +7383,7 @@ error:
 	return ERROR;
 }
 
-static void synapitcs_change_ime_status(struct i2c_client *client,
+static void synaptics_change_ime_status(struct i2c_client *client,
 		int ime_status)
 {
 	struct synaptics_ts_data *ts =
@@ -7521,7 +7521,7 @@ error:
 	return -EPERM;
 }
 
-enum window_status synapitcs_check_crack(struct i2c_client *client)
+enum window_status synaptics_check_crack(struct i2c_client *client)
 {
 	struct synaptics_ts_data *ts =
 		(struct synaptics_ts_data *)get_touch_handle(client);
@@ -7716,7 +7716,7 @@ enum error_type synaptics_ts_shutdown(struct i2c_client *client)
 	return NO_ERROR;
 }
 
-static int synapitcs_ts_register_sysfs(struct kobject *k)
+static int synaptics_ts_register_sysfs(struct kobject *k)
 {
 	return sysfs_create_group(k, &synaptics_ts_attribute_group);
 }
@@ -7735,10 +7735,10 @@ struct touch_device_driver synaptics_ts_driver = {
 	.fw_upgrade	= synaptics_ts_fw_upgrade,
 	.notify		= synaptics_ts_notify,
 	.lpwg		= synaptics_ts_lpwg,
-	.ime_drumming = synapitcs_change_ime_status,
+	.ime_drumming = synaptics_change_ime_status,
 	.toggle_swipe = synaptics_toggle_swipe,
-	.inspection_crack = synapitcs_check_crack,
-	.register_sysfs = synapitcs_ts_register_sysfs,
+	.inspection_crack = synaptics_check_crack,
+	.register_sysfs = synaptics_ts_register_sysfs,
 	.incoming_call = synaptics_ts_incoming_call,
 };
 
